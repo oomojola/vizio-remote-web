@@ -9,7 +9,6 @@
       <div class="remote-control">
         <!-- D-Pad Section -->
         <div class="d-pad-section">
-          <h2>Directional Pad</h2>
           <div class="d-pad">
             <button @click="sendKey('UP')" class="d-pad-btn d-pad-up" :disabled="isSending">
               ↑
@@ -33,7 +32,6 @@
 
         <!-- Volume Controls -->
         <div class="controls-section">
-          <h2>Volume</h2>
           <div class="control-buttons">
             <button @click="sendKey('VOL_UP')" class="control-btn volume-up" :disabled="isSending">
               <span class="icon">🔊</span>
@@ -48,7 +46,6 @@
 
         <!-- Channel Controls -->
         <div class="controls-section">
-          <h2>Channel</h2>
           <div class="control-buttons">
             <button @click="sendKey('CH_UP')" class="control-btn channel-up" :disabled="isSending">
               <span class="icon">📺</span>
@@ -63,8 +60,19 @@
 
         <!-- Action Buttons -->
         <div class="controls-section">
-          <h2>Actions</h2>
           <div class="control-buttons">
+            <button @click="sendKey('BACK')" class="control-btn back-btn" :disabled="isSending">
+              <span class="icon">←</span>
+              <span class="label">Back</span>
+            </button>
+            <button @click="sendKey('EXIT')" class="control-btn exit-btn" :disabled="isSending">
+              <span class="icon">✕</span>
+              <span class="label">Exit</span>
+            </button>
+            <button @click="sendKey('MENU')" class="control-btn menu-btn" :disabled="isSending">
+              <span class="icon">☰</span>
+              <span class="label">Menu</span>
+            </button>
             <button @click="sendKey('RETURN')" class="control-btn return-btn" :disabled="isSending">
               <span class="icon">↩</span>
               <span class="label">Return</span>
@@ -145,8 +153,8 @@ const handleUnpair = async () => {
 .control-container {
   background: white;
   border-radius: 20px;
-  padding: 30px;
-  max-width: 600px;
+  padding: 20px;
+  max-width: 500px;
   width: 100%;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
@@ -161,7 +169,7 @@ const handleUnpair = async () => {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #667eea;
   margin: 0;
 }
@@ -185,7 +193,7 @@ h1 {
 .remote-control {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
 }
 
 .d-pad-section,
@@ -194,9 +202,9 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #666;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-weight: 500;
 }
 
@@ -214,13 +222,13 @@ h2 {
 }
 
 .d-pad-btn {
-  width: 80px;
-  height: 80px;
+  width: 65px;
+  height: 65px;
   border: none;
-  border-radius: 15px;
+  border-radius: 12px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s;
@@ -242,8 +250,8 @@ h2 {
 }
 
 .d-pad-center {
-  width: 80px;
-  height: 80px;
+  width: 65px;
+  height: 65px;
   background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
   box-shadow: 0 4px 15px rgba(17, 153, 142, 0.3);
 }
@@ -261,10 +269,10 @@ h2 {
 
 .control-btn {
   flex: 1;
-  min-width: 140px;
-  padding: 20px;
+  min-width: 110px;
+  padding: 15px;
   border: none;
-  border-radius: 15px;
+  border-radius: 12px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   cursor: pointer;
@@ -273,7 +281,7 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .control-btn:hover:not(:disabled) {
@@ -312,6 +320,33 @@ h2 {
   box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
 }
 
+.back-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.back-btn:hover:not(:disabled) {
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.exit-btn {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3);
+}
+
+.exit-btn:hover:not(:disabled) {
+  box-shadow: 0 6px 20px rgba(245, 87, 108, 0.4);
+}
+
+.menu-btn {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+}
+
+.menu-btn:hover:not(:disabled) {
+  box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+}
+
 .return-btn {
   background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
   box-shadow: 0 4px 15px rgba(250, 112, 154, 0.3);
@@ -322,11 +357,11 @@ h2 {
 }
 
 .icon {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .label {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
 }
 
@@ -342,23 +377,31 @@ h2 {
 
 @media (max-width: 600px) {
   .control-container {
-    padding: 20px;
+    padding: 15px;
   }
 
   .d-pad-btn {
-    width: 70px;
-    height: 70px;
-    font-size: 1.5rem;
+    width: 55px;
+    height: 55px;
+    font-size: 1.2rem;
   }
 
   .d-pad-center {
-    width: 70px;
-    height: 70px;
+    width: 55px;
+    height: 55px;
   }
 
   .control-btn {
-    min-width: 120px;
-    padding: 15px;
+    min-width: 90px;
+    padding: 12px;
+  }
+
+  .icon {
+    font-size: 1.2rem;
+  }
+
+  .label {
+    font-size: 0.7rem;
   }
 }
 </style>

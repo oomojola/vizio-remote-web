@@ -13,6 +13,9 @@ function getKeyHandler(key: string): ((tv: TvInstance) => Promise<any>) | null {
     LEFT: (tv) => tv.control.navigate.left(),
     RIGHT: (tv) => tv.control.navigate.right(),
     ENTER: (tv) => tv.control.navigate.ok(),
+    BACK: (tv) => tv.control.navigate.back(),
+    EXIT: (tv) => tv.control.navigate.exit(),
+    MENU: (tv) => tv.control.menu(),
     RETURN: (tv) => tv.control.media.seek.back(),
     // Volume keys
     VOL_UP: (tv) => tv.control.volume.up(),
